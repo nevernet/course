@@ -1,0 +1,19 @@
+/* 
+    Created on : Nov 29, 2013, 3:20:10 PM
+    Author     : Dreamszhu
+*/
+.panel-heading {
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+    padding: 10px 15px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.panel-heading:first-child {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.panel-heading .btn {
+	margin-top: -5px;
+}

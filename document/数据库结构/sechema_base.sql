@@ -1,0 +1,90 @@
+--
+-- 用户表
+--
+CREATE TABLE users (
+	id serial,
+	username character varying(20) NOT NULL,			-- 用户名
+	password character varying(60) NOT NULL,			-- 密码
+	created timestamp without time zone DEFAULT now() NOT NULL,	-- 创建时间
+
+	CONSTRAINT users_id_pkey PRIMARY KEY (id),
+	CONSTRAINT users_username_unique UNIQUE (username)
+);
+
+--
+-- 培训课程类别表
+--
+CREATE TABLE classes (
+	id serial,
+	user_id integer DEFAULT 0,					-- 所属用户
+	classname character varying(20) NOT NULL,			-- 类别名
+
+	CONSTRAINT classes_id_pkey PRIMARY KEY (id),
+	CONSTRAINT classes_classname_unique UNIQUE (user_id, classname)
+);
+
+--
+-- 培训课程类别表
+--
+CREATE TABLE levels (
+	id serial,
+	user_id integer DEFAULT 0,					-- 所属用户
+	levelname character varying(20) NOT NULL,			-- 等级名
+	created timestamp without time zone DEFAULT now() NOT NULL,	-- 创建时间
+
+	CONSTRAINT levels_id_pkey PRIMARY KEY (id),
+	CONSTRAINT levels_levelname_unique UNIQUE (user_id, levelname)
+);
+
+--
+-- 培训课程表
+--
+CREATE TABLE courses (
+	id serial,
+	user_id integer DEFAULT 0,					-- 所属用户
+	coursename character varying(20) NOT NULL,
+	class_id integer DEFAULT 0,					-- 类别
+	level_id integer DEFAULT 0,					-- 等级 0 入门 1 中级 2 高级
+
+	updated timestamp without time zone,				-- 最后更新时间
+	created timestamp without time zone DEFAULT now() NOT NULL,	-- 创建时间
+
+	CONSTRAINT courses_id_pkey PRIMARY KEY (id),
+	CONSTRAINT courses_coursename_unique UNIQUE (user_id, coursename)
+);
+
+--
+-- 培训课程章节课时表
+--
+CREATE TABLE lessons (
+	id serial,
+	user_id integer DEFAULT 0,					-- 所属用户
+	course_id integer NOT NULL,
+	title character varying(20) NOT NULL,
+	class integer DEFAULT 0,					-- 0 chapter章节 1 lesson课时
+	type integer DEFAULT 0,						-- 0 video视频 1 audio音频 2 text图文
+	sort integer DEFAULT 0,						-- 排序编号
+	path character varying(120) NOT NULL,				-- 内容存储路径
+
+	created timestamp without time zone DEFAULT now() NOT NULL,	-- 创建时间
+
+	CONSTRAINT lessons_id_pkey PRIMARY KEY (id),
+	CONSTRAINT lessons_title_unique UNIQUE (course_id, title)
+);
+CREATE INDEX lessons_title_index ON title USING BTREE (title);
+
+--
+-- 培训课时测验表
+--
+CREATE TABLE quizs (
+	id serial,
+	course_id integer NOT NULL,
+	lesson_id integer NOT NULL,
+	description character varying(250) NOT NULL,			-- 描述
+	level character varying(250) DEFAULT 0,				-- 0 入门 1 中级 2 高级
+	choices json,							-- [{"choice":"选项内容", "answer":true}, {"choice":"选项内容2", "answer":false}]
+
+	created timestamp without time zone DEFAULT now() NOT NULL,	-- 创建时间
+
+	CONSTRAINT quizs_id_pkey PRIMARY KEY (id)
+);

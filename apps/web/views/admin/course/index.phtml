@@ -1,0 +1,79 @@
+<?php $this->partial("course/create") ?>
+<div class="row-fluid">
+	<div class="col-md-3">
+		<div class="panel panel-primary">
+			<div class="panel-heading">我的教学</div>
+			<ul class="list-group">
+				<li class="list-group-item">在教课程</li>
+				<li class="list-group-item">学员问答</li>
+				<li class="list-group-item">学员话题</li>
+			</ul>
+			<div class="panel-heading">我的学习</div>
+			<ul class="list-group">
+				<li class="list-group-item">我的课程</li>
+				<li class="list-group-item">我的问答</li>
+				<li class="list-group-item">我的话题</li>
+				<li class="list-group-item">我的笔记</li>
+			</ul>
+		</div>
+
+	</div>
+	<div class="col-md-9">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<a class="btn btn-info btn-sm pull-right btn-panel-heading" href="/edusoho/app.php/course/create">
+					<span class="glyphicon glyphicon-plus"></span> 
+					创建课程
+				</a>
+				在教课程
+			</div>
+			<div class="panel-body">
+				<p>创建一个具有吸引力的课程，使用具有针对性和概括性的标题。</p>
+			</div>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th width="50%">名称</th>
+						<th>分类</th>
+						<th>阶段</th>
+						<th>学员数</th>
+						<th>价格(元)</th>
+						<th>状态</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<a class="pull-left" href="#">
+								<img class="course-picture" src="" width="100">
+							</a>
+							<a href="#">销售技巧</a>
+						</td>
+						<td>销售</td>
+						<td>入门</td>
+						<td>0</td>
+						<td>0.00</td>
+						<td><span class="text-success">已发布</span></td>
+						<td>
+							<div class="btn-group">
+								<a class="btn btn-default btn-sm" href="#">管理</a>
+
+								<a href="#" type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+									<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu pull-right">
+									<li><a href="#">课时管理</a></li>
+									<li><a href="#">文件管理</a></li>
+									<li><a href="#">学员管理</a></li>
+								</ul>
+							</div>
+
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</div>

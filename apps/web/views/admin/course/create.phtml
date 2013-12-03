@@ -1,0 +1,60 @@
+<!-- set up the modal to start hidden and fade in and out -->
+<div id="course-create-modal" class="modal fade" tabindex="-1" aria-labelledby="course-create-modal-label" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="course-create-modal-label">创建课程</h4>
+			</div>
+			<div class="modal-body">
+				<form method="post" class="form-horizontal" id="course-create-form">
+
+					<div class="form-group">
+						<div class="col-md-2 control-label"><label for="course_title" class="required">标题</label></div>
+						<div class="col-md-8 controls"><input type="text" id="coursename" name="coursename" required="required" class="form-control" /></div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-8 controls">
+							<input type="submit" value="创建" class="btn btn-fat btn-primary" id="course-create-btn">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-8 controls">
+							<a target="_blank" class="text-muted" href="#">如何创建课程？</a>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer"><a class="btn btn-primary">创建</a></div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$("#course-create-modal").on("show.bs.modal", function() {
+		console.log("modal show");
+		$("#course-create-modal a.btn").on("click", function(e) {
+			console.log("button pressed");
+			$("#course-create-modal").modal('hide');
+		});
+	});
+
+	$("#course-create-modal").on("hide.bs.modal", function() {
+		console.log("modal hide");
+		$("#course-create-modal a.btn").off("click");
+	});
+
+	$("#course-create-modal").on("hidden.bs.modal", function() {
+		console.log("modal hidden");
+		$("#course-create-modal").remove();
+	});
+
+	$("#course-create-modal").modal({
+		"backdrop": "static",
+		"keyboard": true,
+		"show": true
+	});
+	console.log("modal");
+</script>
