@@ -30,6 +30,7 @@ CREATE TABLE levels (
 	id serial,
 	user_id integer DEFAULT 0,					-- 所属用户
 	levelname character varying(20) NOT NULL,			-- 等级名
+	level character varying(20) NOT NULL,				-- 对应的等级 0 入门 1 中级 2 高级
 	created timestamp without time zone DEFAULT now() NOT NULL,	-- 创建时间
 
 	CONSTRAINT levels_id_pkey PRIMARY KEY (id),
@@ -44,7 +45,8 @@ CREATE TABLE courses (
 	user_id integer DEFAULT 0,					-- 所属用户
 	coursename character varying(20) NOT NULL,
 	class_id integer DEFAULT 0,					-- 类别
-	level_id integer DEFAULT 0,					-- 等级 0 入门 1 中级 2 高级
+	level integer DEFAULT 0,					-- 等级 0 入门 1 中级 2 高级
+	status integer DEFAULT 0,					-- 状态 0 未发布 1 已发布
 
 	updated timestamp without time zone,				-- 最后更新时间
 	created timestamp without time zone DEFAULT now() NOT NULL,	-- 创建时间
