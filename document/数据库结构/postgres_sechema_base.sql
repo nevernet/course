@@ -12,6 +12,16 @@ CREATE TABLE users (
 );
 
 --
+-- 培训课程系统类别表
+--
+CREATE TABLE types (
+	id serial,
+	typename character varying(20) NOT NULL,			-- 等级名
+
+	CONSTRAINT types_id_pkey PRIMARY KEY (id)
+);
+
+--
 -- 培训课程类别表
 --
 CREATE TABLE classes (
@@ -24,26 +34,13 @@ CREATE TABLE classes (
 );
 
 --
--- 培训课程类别表
---
-CREATE TABLE levels (
-	id serial,
-	user_id integer DEFAULT 0,					-- 所属用户
-	levelname character varying(20) NOT NULL,			-- 等级名
-	level character varying(20) NOT NULL,				-- 对应的等级 0 入门 1 中级 2 高级
-	created timestamp without time zone DEFAULT now() NOT NULL,	-- 创建时间
-
-	CONSTRAINT levels_id_pkey PRIMARY KEY (id),
-	CONSTRAINT levels_levelname_unique UNIQUE (user_id, levelname)
-);
-
---
 -- 培训课程表
 --
 CREATE TABLE courses (
 	id serial,
 	user_id integer DEFAULT 0,					-- 所属用户
 	coursename character varying(20) NOT NULL,
+	type_id integer DEFAULT 0,					-- 系统类别
 	class_id integer DEFAULT 0,					-- 类别
 	level integer DEFAULT 0,					-- 等级 0 入门 1 中级 2 高级
 	status integer DEFAULT 0,					-- 状态 0 未发布 1 已发布
