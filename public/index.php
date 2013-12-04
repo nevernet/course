@@ -6,7 +6,9 @@ try {
 	$loader = new \Phalcon\Loader();
 	
 	$loader->registerNamespaces(array(
-		'Controllers\Admin' => '../apps/web/controllers/admin/'
+		'Controllers\Admin' => '../apps/web/controllers/admin/',
+		'Controllers\Teach' => '../apps/web/controllers/teach/',
+		'Controllers\Learn' => '../apps/web/controllers/learn/'
 	));
 
 	$loader->registerDirs(array(
@@ -33,6 +35,8 @@ try {
 
 	$di->set('router', function() {
 		$router = new \Phalcon\Mvc\Router();
+		
+		// 管理
 		$router->add('/admin/:controller/:action/:params', array(
 			'namespace' => 'Controllers\Admin',
 			'controller' => 1,
@@ -47,6 +51,42 @@ try {
 
 		$router->add('/admin', array(
 			'namespace' => 'Controllers\Admin',
+			'controller' => 'index'
+		));
+		
+		// 培训师
+		$router->add('/teach/:controller/:action/:params', array(
+			'namespace' => 'Controllers\Teach',
+			'controller' => 1,
+			'action' => 2,
+			'params' => 3,
+		));
+
+		$router->add('/teach/:controller', array(
+			'namespace' => 'Controllers\Teach',
+			'controller' => 1
+		));
+
+		$router->add('/teach', array(
+			'namespace' => 'Controllers\Teach',
+			'controller' => 'index'
+		));
+		
+		// 学生
+		$router->add('/learn/:controller/:action/:params', array(
+			'namespace' => 'Controllers\Learn',
+			'controller' => 1,
+			'action' => 2,
+			'params' => 3,
+		));
+
+		$router->add('/learn/:controller', array(
+			'namespace' => 'Controllers\Learn',
+			'controller' => 1
+		));
+
+		$router->add('/learn', array(
+			'namespace' => 'Controllers\Learn',
 			'controller' => 'index'
 		));
 		
