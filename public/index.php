@@ -36,7 +36,7 @@ try {
 	$di->set('router', function() {
 		$router = new \Phalcon\Mvc\Router();
 		
-		// ¹ÜÀí
+		// ç®¡ç†
 		$router->add('/admin/:controller/:action/:params', array(
 			'namespace' => 'Controllers\Admin',
 			'controller' => 1,
@@ -54,7 +54,7 @@ try {
 			'controller' => 'index'
 		));
 		
-		// ÅàÑµÊ¦
+		// åŸ¹è®­å¸ˆ
 		$router->add('/teach/:controller/:action/:params', array(
 			'namespace' => 'Controllers\Teach',
 			'controller' => 1,
@@ -72,7 +72,7 @@ try {
 			'controller' => 'index'
 		));
 		
-		// Ñ§Éú
+		// å­¦ç”Ÿ
 		$router->add('/learn/:controller/:action/:params', array(
 			'namespace' => 'Controllers\Learn',
 			'controller' => 1,
