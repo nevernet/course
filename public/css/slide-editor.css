@@ -1,0 +1,102 @@
+.slide-editor {
+}
+.slide-editor .slide-container {
+	background-color: #FFF;
+	outline: medium none;
+	position: relative;
+	width: 100%;
+	height:100%;
+	min-height: 500px;
+    box-shadow: -2px 0 15px rgba(0, 0, 0, 0.4);
+}
+.slide-container .slide-component {
+	border: 1px solid #FFF;
+    line-height: normal;
+	position: absolute;
+    cursor: pointer;
+    margin: 0;
+    min-height: 25px;
+    min-width: 25px;
+}
+.slide-container .slide-component .editable {
+	display: block;
+	padding: 5px;
+    height: 100%;
+    width: 100%;
+	overflow: hidden;
+}
+.slide-component .editable.selected {
+	margin: -1px;
+	background-color: #FFFFFF;
+    background-image: none;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555555;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+.slide-component .editable.selected:focus {
+	border-color: #66AFE9;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+    outline: 0 none;
+}
+
+.slide-component.dragged:hover {
+	cursor: move;
+}
+.slide-component.selected {
+	border: 1px dotted #99AACC;
+}
+.slide-component.dragging {
+	border: 1px dashed #99AACC;
+	opacity: 0.8;
+}
+.slide-component .move {
+    border-bottom: 1px solid #8899BB;
+    color: #222222;
+    cursor: move;
+    font-size: 10px;
+    line-height: 10px;
+    padding: 2px 0;
+    text-align: center;
+}
+.slide-component .north {
+	display: none;
+    background: none repeat scroll 0 0 #99AACC;
+    border: 1px solid #8899BB;
+    height: 6px;
+    position: absolute;
+    width: 6px;
+}
+.slide-component.selected .north {
+	display: block;
+}
+.slide-component .NW, .NN, .NE {
+	display: none;
+	top: -4px;
+}
+.slide-component .NE, .EE, .SE {
+	right: -4px;
+}
+.slide-component .SW, .SS, .SE {
+	bottom: -4px;
+}
+.slide-component .NW, .WW, .SW {
+	left: -4px;
+}
+.slide-component .SE, .NW {	
+	cursor: nw-resize;
+}
+.slide-component .SW, .NE {
+	cursor: ne-resize;
+}
+.slide-component .NN, .SS {
+	cursor: n-resize;
+	left: 50%;
+	margin-left: -4px;
+}
+.slide-component .EE, .WW {
+	cursor: e-resize;
+	top: 50%;
+	margin-top: -4px;
+}	

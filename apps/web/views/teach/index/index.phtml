@@ -1,0 +1,57 @@
+<?php $this->partial("course/create") ?>
+<div class="row-fluid">
+	<div class="col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">我的教学</div>
+			<ul class="list-group">
+				<li class="list-group-item active">在教课程</li>
+				<li class="list-group-item">学员问答</li>
+				<li class="list-group-item">学员话题</li>
+			</ul>
+		</div>
+
+	</div>
+	<div class="col-md-9">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<button class="btn btn-info btn-sm pull-right btn-panel-heading" data-toggle="modal" data-target="#course-create-modal">
+					<span class="glyphicon glyphicon-plus"></span> 
+					创建课程
+				</button>
+				在教课程
+			</div>
+			<div class="panel-body">
+				<p>创建一个具有吸引力的课程，使用具有针对性和概括性的标题。</p>
+			</div>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th width="50%">课程名</th>
+						<th>分类</th>
+						<th>阶段</th>
+						<th>学员数</th>
+						<th>价格(元)</th>
+						<th>状态</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<a href="#">如何进行有效的沟通 </a>
+						</td>
+						<td>销售 - 营销</td>
+						<td>入门</td>
+						<td>0</td>
+						<td>0.00</td>
+						<td><span class="text-success">已发布</span></td>
+						<td>
+							<a href="/teach/course/index">管理</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</div>

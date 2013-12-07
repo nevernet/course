@@ -3,16 +3,13 @@
  * Description of IndexController
  *
  * @author dreamszhu dreamsxin@qq.com
- * @date 2013-12-02
+ * @date 2013-12-04
  */
 namespace Controllers\Teach;
 
-class CourseController extends ControllerBase {
+class LessonController extends ControllerBase {
 
 	public function indexAction() {
-	}
-	
-	public function lessonAction() {
 	}
 
 }

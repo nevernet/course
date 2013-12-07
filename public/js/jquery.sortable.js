@@ -10,8 +10,11 @@ var dragging, placeholders = $();
 $.fn.sortable = function(options) {
 	var method = String(options);
 	options = $.extend({
+		up: null,
+		down: null, 
 		connectWith: false,
-		placeholder:"sortable-placeholder",
+		handle: null,
+		placeholder: "sortable-placeholder"
 	}, options);
 	return this.each(function() {
 		if (/^enable|disable|destroy$/.test(method)) {
@@ -23,21 +26,40 @@ $.fn.sortable = function(options) {
 			return;
 		}
 		var isHandle, index, items = $(this).children(options.items);
+		items.addClass('sortable-item');
+
 		var placeholder = $('<' + (/^ul|ol$/i.test(this.tagName) ? 'li' : 'div') + ' class="' + options.placeholder + '">');
-		items.find(options.handle).mousedown(function() {
-			isHandle = true;
-		}).mouseup(function() {
-			isHandle = false;
-		});
+		if (options.handle) {
+			items.find(options.handle).mousedown(function() {
+				isHandle = true;
+			}).mouseup(function() {
+				isHandle = false;
+			});
+		}
+		if (options.up) {
+			$(options.up).on('click', function() {
+				var item = $(this).closest('.sortable-item');
+				item.prev().before(item);
+			});
+		}
+		if (options.down) {
+			$(options.down).on('click', function() {
+				var item = $(this).closest('.sortable-item');
+				item.next().after(item);
+			});
+		}		
 		$(this).data('items', options.items)
 		placeholders = placeholders.add(placeholder);
 		if (options.connectWith) {
 			$(options.connectWith).add(this).data('connectWith', options.connectWith);
 		}
+
 		items.attr('draggable', 'true').on('dragstart.h5s', function(e) {
 			if (options.handle && !isHandle) {
 				return false;
 			}
+			placeholder.html($(this).html());
+
 			isHandle = false;
 			var dt = e.originalEvent.dataTransfer;
 			dt.effectAllowed = 'move';

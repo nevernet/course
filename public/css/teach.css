@@ -1,0 +1,17 @@
+.lesson-list .sortable-placeholder {
+	background-color: #F3F3F3;
+}
+.lesson-list .sortable-dragging {
+}
+.lesson-list .lesson-tooltip .btn {
+	padding: 0px;
+}
+.lesson-list .lesson-tooltip {
+    visibility: hidden;
+}
+.lesson-list .list-group-item:hover {
+    background-color: #F5F5F5;
+}
+.lesson-list .list-group-item:hover .lesson-tooltip, .lesson-list .list-group-item:hover .lesson-tooltip {
+    visibility: visible;
+}

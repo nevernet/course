@@ -1,0 +1,63 @@
+<?php $this->partial("lesson/create") ?>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<button class="btn btn-info btn-sm pull-right btn-panel-heading" data-toggle="modal" data-target="#lesson-create-modal">
+			<span class="glyphicon glyphicon-plus"></span> 
+			创建课时
+		</button>
+		课时管理
+	</div>
+	<div class="panel-body">
+		<p>现在您可以创建和编辑课程的相关课时啦。</p>
+	</div>
+	<ol class="list-group lesson-list">
+		<li class="list-group-item">
+			<div class="pull-right lesson-tooltip">				
+				<a class="btn btn-link sort-up"><span class="glyphicon glyphicon-chevron-up"></span></a>
+				<a class="btn btn-link sort-down"><span class="glyphicon glyphicon-chevron-down"></span></a>
+				<a class="btn btn-link" data-toggle="tooltip" data-placement="top" title="预览"><span class="glyphicon glyphicon-eye-open"></span></a>
+				<a class="btn btn-link" data-toggle="tooltip" data-placement="top" title="编辑" href="/teach/lesson/index"><span class="glyphicon glyphicon-edit"></span></a>
+				<a class="btn btn-link" data-toggle="tooltip" data-placement="top" title="删除"><span class="glyphicon glyphicon-trash"></span></a>
+			</div>
+			<span class="glyphicon glyphicon-facetime-video text-success"></span>
+			了解产品
+		</li>
+		<li class="list-group-item">
+			<div class="pull-right lesson-tooltip">
+				<a class="btn btn-link sort-up"><span class="glyphicon glyphicon-chevron-up"></span></a>
+				<a class="btn btn-link sort-down"><span class="glyphicon glyphicon-chevron-down"></span></a>
+				<a class="btn btn-link" data-toggle="tooltip" data-placement="top" title="预览"><span class="glyphicon glyphicon-eye-open"></span></a>
+				<a class="btn btn-link" data-toggle="tooltip" data-placement="top" title="编辑" href="/teach/lesson/index"><span class="glyphicon glyphicon-edit"></span></a>
+				<a class="btn btn-link" data-toggle="tooltip" data-placement="top" title="删除"><span class="glyphicon glyphicon-trash"></span></a>
+			</div>
+			<span class="glyphicon glyphicon-file text-success"></span>
+			了解客户
+		</li>
+		<li class="list-group-item">
+			<div class="pull-right lesson-tooltip">
+				<a class="btn btn-link sort-up"><span class="glyphicon glyphicon-chevron-up"></span></a>
+				<a class="btn btn-link sort-down"><span class="glyphicon glyphicon-chevron-down"></span></a>
+				<a class="btn btn-link" data-toggle="tooltip" data-placement="top" title="预览"><span class="glyphicon glyphicon-eye-open"></span></a>
+				<a class="btn btn-link" data-toggle="tooltip" data-placement="top" title="编辑" href="/teach/lesson/index"><span class="glyphicon glyphicon-edit"></span></a>
+				<a class="btn btn-link" data-toggle="tooltip" data-placement="top" title="删除"><span class="glyphicon glyphicon-trash"></span></a>
+			</div>
+			<span class="glyphicon glyphicon-volume-up text-success"></span>
+			了解自己
+		</li>
+	</ol>
+</div>
+<script>
+	$(function() {
+		$('.lesson-tooltip').tooltip({
+			selector: "[data-toggle=tooltip]",
+			container: "body"
+		});
+
+		$('.lesson-list').sortable({
+			up: '.sort-up',
+			down: '.sort-down',
+			items: ':not(.disabled)',
+			placeholder: "list-group-item sortable-placeholder"
+		});
+	});
+</script>

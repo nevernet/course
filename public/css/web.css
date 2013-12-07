@@ -2,3 +2,101 @@
     Created on : Nov 29, 2013, 3:20:10 PM
     Author     : Dreamszhu
 */
+.course-item-list-wrap {
+    margin-left: 25px;
+	border-left: 1px solid #C9C9C9;
+}
+
+.course-item-list {
+    list-style: none;
+    margin-left: -25px;
+    padding: 0;
+}
+
+.course-item-list .item {
+	height: 50px;
+    padding: 10px;
+	line-height: 30px;
+}
+
+.course-item-list .item .name {
+    color: #999999;
+    display: inline-block;
+    margin-right: 10px;
+    text-align: right;
+    width: 60px;
+}
+
+.course-item-list .item .title {
+    color: #888888;
+    display: inline-block;
+    height: 30px;
+    text-decoration: none;
+}
+
+.course-item-list .chapter-item {
+    background-color: #F6F6F6;
+}
+
+.course-item-list .chapter-item .name {
+    font-weight: bold;
+}
+
+.course-item-list .chapter-item .pie {
+	float: left;
+    height: 30px;
+    width: 30px;
+	line-height: 26px;
+	border: #ddd solid 2px;
+	border-radius: 30px;
+	background: #fff;
+    display: inline-block;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.course-item-list .chapter-item .title {
+    color: #888888;
+    font-weight: bold;
+}
+
+.course-item-list .lesson-item {
+    color: #999999;
+	position: relative;
+}
+
+.course-item-list .lesson-item .pie {
+	float: left;
+    height: 16px;
+    width: 16px;
+	margin: 6px 0px 0px 6px;
+    display: inline-block;
+	box-shadow: 0 0 0 2px #ddd;
+	border: #fff solid 2px;
+	border-radius: 16px;
+	background: linear-gradient(to right, #009966 50%, #fff 50%);
+	background-size: 200% 100%;
+	background-position: 100% 0%;
+}
+
+.course-item-list .lesson-item-learning .pie {
+	background-position: 50% 0%;
+	animation:learningpie 2s ease;
+}
+
+.course-item-list .lesson-item-finished .pie {
+	background-position: 0% 0%;
+	animation:finishedpie 2s ease;
+}
+
+@keyframes learningpie
+{
+	from {background-position: 100% 0%;}
+	to {background-position: 50% 0%;}
+}
+
+@keyframes finishedpie
+{
+	from {background-position: 100% 0%;}
+	to {background-position: 0% 0%;}
+}

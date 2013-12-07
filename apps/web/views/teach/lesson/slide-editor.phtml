@@ -1,0 +1,91 @@
+<div id="slide-insert-image-modal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">插入图片</h4>
+			</div>
+			<div class="modal-body">
+				<form method="post" class="form-horizontal">
+					<div class="form-group">
+						<div class="col-md-3 control-label"><label>图片文件</label></div>
+						<div class="col-md-8 controls">
+							<input type="file" name="file" accept="image/gif, image/jpeg, image/x-png" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-offset-3 col-md-8 controls">
+							<a class="btn btn-fat btn-primary slide-btn-insert-image">插入</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="slide-insert-video-modal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">插入视频</h4>
+			</div>
+			<div class="modal-body">
+				<form method="post" class="form-horizontal">
+					<div class="form-group">
+						<div class="col-md-3 control-label"><label>视频文件</label></div>
+						<div class="col-md-8 controls">
+							<input type="file" name="file" accept="video/mp4, video/ogg" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-offset-3 col-md-8 controls">
+							<a class="btn btn-fat btn-primary slide-btn-insert-video">插入</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="panel panel-default slide-editor">
+	<div class="panel-heading">
+		<div class="pull-right">
+			<div class="btn-group slide-toolbar">
+				<button type="button" class="btn btn-sm btn-default slide-btn-insert-text">插入文本</button>
+				<button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#slide-insert-image-modal">插入图片</button>
+				<button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#slide-insert-video-modal">插入视频</button>
+				<div class="btn-group">
+					<button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+						选择背景
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">背景A</a></li>
+						<li><a href="#">背景B</a></li>
+						<li><a href="#">背景C</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		章节编辑
+	</div>
+	<div class="panel-body" style="height: 600px;">
+		<div class="slide-container">
+		</div>
+	</div>
+</div>
+<script>
+	$(function() {
+		$(".slide-editor").slideEditor();
+//		$('.slide-component').drag(function(ev, dd) {
+//			$(this).css({
+//				top: dd.offsetY,
+//				left: dd.offsetX
+//			});
+//		}, {relative: true, handle: ".move"});
+
+	});
+</script>

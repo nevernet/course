@@ -1,0 +1,35 @@
+<?php $this->partial("lesson/createchapter") ?>
+<div class="row-fluid">
+	<div class="col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="pull-right">
+					<button class="btn btn-info btn-sm" data-toggle="modal" data-target="#lesson-chapter-create-modal">
+						<span class="glyphicon glyphicon-plus"></span> 
+						创建章节
+					</button>
+				</div>
+				课时：了解产品 · 章节列表
+			</div>
+			<div class="panel-body" style="padding: 5px;">
+				<div class="list-group left-bar" style="height: 600px; margin: 0px; padding: 0px;">
+					<a class="list-group-item">章节1</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-9">
+		<?php $this->partial("lesson/slide-editor") ?>
+	</div>
+</div>
+<script>
+	$(function() {
+		$(".left-bar").niceScroll();
+
+		$("#lesson-chapter-create-modal a.btn").on("click", function(e) {
+			$('.left-bar').append('<a class="list-group-item active" href="#">' + $('#chaptername').val() + '</a>');
+			$('#chaptername').val('');
+			$("#lesson-chapter-create-modal").modal('hide');
+		});
+	});
+</script>
