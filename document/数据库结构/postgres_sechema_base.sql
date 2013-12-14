@@ -87,3 +87,34 @@ CREATE TABLE quizs (
 
 	CONSTRAINT quizs_id_pkey PRIMARY KEY (id)
 );
+
+--
+-- 用户学习课程状态表
+--
+CREATE TABLE learn_courses (
+	id serial,
+	user_id integer DEFAULT 0,					-- 所属用户
+	course_id integer NOT NULL,
+	status integer DEFAULT 0,					-- 0 学习中 1 学习完成
+
+	created timestamp without time zone DEFAULT now() NOT NULL,	-- 创建时间
+
+	CONSTRAINT learn_courses_id_pkey PRIMARY KEY (id),
+	CONSTRAINT learn_courses_course_id_unique UNIQUE (user_id, course_id)
+);
+
+--
+-- 用户学习课时状态表
+--
+CREATE TABLE learn_lessons (
+	id serial,
+	user_id integer DEFAULT 0,					-- 所属用户
+	course_id integer NOT NULL,
+	lesson_id integer NOT NULL,
+	status integer DEFAULT 0,					-- 0 学习中 1 学习完成
+
+	created timestamp without time zone DEFAULT now() NOT NULL,	-- 创建时间
+
+	CONSTRAINT learn_lessons_id_pkey PRIMARY KEY (id),
+	CONSTRAINT learn_lessons_course_id_unique UNIQUE (user_id, course_id, lesson_id)
+);
