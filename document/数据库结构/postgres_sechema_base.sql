@@ -111,7 +111,7 @@ CREATE TABLE learn_lessons (
 	user_id integer DEFAULT 0,					-- 所属用户
 	course_id integer NOT NULL,
 	lesson_id integer NOT NULL,
-	status integer DEFAULT 0,					-- 0 学习中 1 学习完成
+	status integer DEFAULT 0 NOT NULL,				-- 0 学习中 1 学习完成
 
 	created timestamp without time zone DEFAULT now() NOT NULL,	-- 创建时间
 
