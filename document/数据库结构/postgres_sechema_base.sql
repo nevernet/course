@@ -1,4 +1,54 @@
 --
+-- 创建分词器
+--
+-- create the extension
+
+CREATE EXTENSION zhparser
+  SCHEMA course
+  VERSION "1.0";
+
+CREATE TEXT SEARCH CONFIGURATION chinesecfg (PARSER = course.zhparser);
+
+ALTER TEXT SEARCH CONFIGURATION chinesecfg ADD MAPPING FOR a WITH simple;
+ALTER TEXT SEARCH CONFIGURATION chinesecfg ADD MAPPING FOR e WITH simple;
+ALTER TEXT SEARCH CONFIGURATION chinesecfg ADD MAPPING FOR i WITH simple;
+ALTER TEXT SEARCH CONFIGURATION chinesecfg ADD MAPPING FOR l WITH simple;
+ALTER TEXT SEARCH CONFIGURATION chinesecfg ADD MAPPING FOR n WITH simple;
+
+--
+-- 
+--
+
+CREATE OR REPLACE FUNCTION plainto_or_tsquery (text TEXT)
+	RETURNS tsquery AS 
+$BODY$
+DECLARE
+	ret tsquery;
+BEGIN
+	SELECT replace(plainto_tsquery('course.chinesecfg', text)::text, '&', '|')::tsquery INTO ret;
+	RETURN ret;
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE
+	COST 100;
+
+--
+-- 
+--
+CREATE OR REPLACE FUNCTION plainto_or_tsquery2(text TEXT)
+	RETURNS tsquery AS 
+$BODY$
+DECLARE
+	ret tsquery;
+BEGIN
+	SELECT to_tsquery('course.chinesecfg', ARRAY_TO_STRING(ARRAY(SELECT token FROM ts_parse('course.zhparser', text)), '*|*')) INTO ret;
+	RETURN ret;
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE
+	COST 100;
+
+--
 -- 用户表
 --
 CREATE TABLE users (
